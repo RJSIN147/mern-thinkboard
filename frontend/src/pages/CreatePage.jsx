@@ -36,7 +36,7 @@ const CreatePage = () => {
           icon: "💀",
         });
       } else {
-        toast.error("Failed to create note");
+        toast.error("Sign in required.");
       }
     } finally {
       setLoading(false);
