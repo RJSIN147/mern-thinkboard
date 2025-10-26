@@ -2,10 +2,8 @@ import Note from "../models/Note.js";
 
 export async function getAllNotes(req, res) {
   try {
-    // Only return notes for the authenticated user
-    const notes = await Note.find({ author: req.user?.id }).sort({
-      createdAt: -1,
-    });
+    // Only returns notes for the authenticated user
+    const notes = await Note.find({ author: req.user?.id }).sort({ createdAt: -1 });
     res.status(200).json(notes);
   } catch (error) {
     console.error("Error in getAllNotes controller", error);
@@ -17,7 +15,7 @@ export async function getNoteById(req, res) {
   try {
     const note = await Note.findById(req.params.id);
     if (!note) return res.status(404).json({ message: "Note not found!" });
-    // Only allow access to own notes
+    // Only allows access to own notes
     if (note.author?.toString() !== req.user?.id) {
       return res.status(403).json({ message: "Access denied" });
     }
@@ -44,7 +42,6 @@ export async function createNote(req, res) {
 export async function updateNote(req, res) {
   try {
     const { title, content } = req.body;
-    // Verify the note exists and belongs to the user
     const note = await Note.findById(req.params.id);
     if (!note) return res.status(404).json({ message: "Note not found" });
     if (note.author?.toString() !== req.user?.id) {
@@ -67,13 +64,12 @@ export async function updateNote(req, res) {
 
 export async function deleteNote(req, res) {
   try {
-    // Verify the note exists and belongs to the user
     const note = await Note.findById(req.params.id);
     if (!note) return res.status(404).json({ message: "Note not found" });
     if (note.author?.toString() !== req.user?.id) {
       return res.status(403).json({ message: "Access denied" });
     }
-
+    
     await note.deleteOne();
     res.status(200).json({ message: "Note deleted successfully!" });
   } catch (error) {

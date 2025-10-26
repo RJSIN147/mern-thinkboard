@@ -20,6 +20,7 @@ UPSTASH_REDIS_REST_URL=<your_redis_rest_url>
 UPSTASH_REDIS_REST_TOKEN=<your_redis_rest_token>
 
 NODE_ENV=development
+JWT_SECRET=<your_jwt_secret>
 ```
 
 ## 🔧 Run the Backend

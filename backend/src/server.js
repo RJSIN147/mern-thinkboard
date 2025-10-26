@@ -22,20 +22,8 @@ if (process.env.NODE_ENV !== "production") {
     })
   );
 }
-app.use(express.json()); // this middleware will parse JSON bodies: req.body
+app.use(express.json())
 app.use(rateLimiter);
-
-if (!process.env.JWT_SECRET) {
-  console.warn(
-    "WARNING: JWT_SECRET is not set. Auth endpoints will fail until you set JWT_SECRET in your .env file."
-  );
-}
-
-// our simple custom middleware
-// app.use((req, res, next) => {
-//   console.log(`Req method is ${req.method} & Req URL is ${req.url}`);
-//   next();
-// });
 
 app.use("/api/notes", notesRoutes);
 app.use("/api/auth", authRoutes);

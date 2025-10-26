@@ -10,7 +10,6 @@ import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-// protect all note routes - viewing and modifying
 router.get("/", auth, getAllNotes);
 router.get("/:id", auth, getNoteById);
 router.post("/", auth, createNote);
