@@ -1,4 +1,4 @@
-<h1 align="center">📝 MERN Stack Note Taking App ✨</h1>
+<h1 align="center">📝 ThinkBoard ✨</h1>
 
 Highlights:
 

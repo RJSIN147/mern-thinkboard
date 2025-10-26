@@ -14,11 +14,26 @@ body {
       rgba(123, 94, 58, 0.04) 0%,
       transparent 25%
     );
+  background-image: radial-gradient(
+      circle at 10% 10%,
+      rgba(168, 75, 42, 0.06) 0%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(123, 94, 58, 0.04) 0%,
+      transparent 25%
+    ),
+    url("/autumn-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   background-color: theme("colors.base-100", "#FFF8F2");
 }
 
 .autumn-vignette {
-  background: radial-gradient(
+  /* keep the existing subtle radial overlays while the SVG fills the canvas */
+  background-image: radial-gradient(
       1200px 600px at 10% 10%,
       rgba(168, 75, 42, 0.06),
       transparent 15%
@@ -28,4 +43,5 @@ body {
       rgba(123, 94, 58, 0.04),
       transparent 18%
     );
+  background-repeat: no-repeat;
 }
